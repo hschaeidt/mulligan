@@ -10,7 +10,13 @@
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"jakebecker.elixir-ls"
+				"jakebecker.elixir-ls",
+				"phoenixframework.phoenix",
+				"ms-azuretools.vscode-docker",
+
+				// Optional development tools.
+				"GitHub.copilot-nightly",
+				"GitHub.copilot-chat"
 			]
 		}
 	},
