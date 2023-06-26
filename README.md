@@ -34,3 +34,19 @@ In order to test the Dev Container setup itself, run the following command from 
 ```bash
 bash ./test-project/test.sh
 ```
+
+##### Initiliazing the project from scratch
+
+The following steps were taken to initialize the project from scratch from within the Dev Container shell:
+
+1. Run `mix phx.new mulligan`
+2. Run `cd mulligan`
+3. Run `mix setup`
+
+##### Run the project
+
+To run the project, run the following command from within the Dev Container shell:
+
+```bash
+mix phx.server
+```
