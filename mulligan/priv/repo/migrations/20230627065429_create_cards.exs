@@ -2,7 +2,8 @@ defmodule Mulligan.Repo.Migrations.CreateCards do
   use Ecto.Migration
 
   def change do
-    create table(:cards) do
+    create table(:cards, primary_key: false) do
+      add :card_code, :string, primary_key: true
       add :associated_cards, {:array, :string}
       add :associated_card_refs, {:array, :string}
       add :assets_path, :string
@@ -12,19 +13,18 @@ defmodule Mulligan.Repo.Migrations.CreateCards do
       add :attack, :integer
       add :cost, :integer
       add :health, :integer
-      add :description, :string
-      add :description_raw, :string
-      add :levelup_description, :string
-      add :levelup_description_raw, :string
-      add :flavor_text, :string
+      add :description, :text
+      add :description_raw, :text
+      add :levelup_description, :text
+      add :levelup_description_raw, :text
+      add :flavor_text, :text
       add :artist_name, :string
       add :name, :string
-      add :card_code, :string
       add :keywords, {:array, :string}
       add :keyword_refs, {:array, :string}
       add :spell_speed, :string
       add :spell_speed_ref, :string
-      add :raritiy, :string
+      add :rarity, :string
       add :rarity_ref, :string
       add :subtypes, {:array, :string}
       add :supertype, :string
@@ -37,5 +37,8 @@ defmodule Mulligan.Repo.Migrations.CreateCards do
 
       timestamps()
     end
+
+    # Cards are unique by card_code
+    # create index(:cards, [:card_code], unique: true)
   end
 end

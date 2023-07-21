@@ -2,6 +2,8 @@ defmodule Mulligan.Card do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:card_code, :string, autogenerate: false}
+
   schema "cards" do
     field :name, :string
     field :set, :string
@@ -24,11 +26,10 @@ defmodule Mulligan.Card do
     field :levelup_description_raw, :string
     field :flavor_text, :string
     field :artist_name, :string
-    field :card_code, :string
     field :keyword_refs, {:array, :string}
     field :spell_speed, :string
     field :spell_speed_ref, :string
-    field :raritiy, :string
+    field :rarity, :string
     field :rarity_ref, :string
     field :subtypes, {:array, :string}
     field :supertype, :string
@@ -41,7 +42,8 @@ defmodule Mulligan.Card do
   @doc false
   def changeset(card, attrs) do
     card
-    |> cast(attrs, [:associated_cards, :associated_card_refs, :assets_path, :assets_full_path, :regions, :region_refs, :attack, :cost, :health, :description, :description_raw, :levelup_description, :levelup_description_raw, :flavor_text, :artist_name, :name, :card_code, :keywords, :keyword_refs, :spell_speed, :spell_speed_ref, :raritiy, :rarity_ref, :subtypes, :supertype, :type, :collectible, :set, :formats, :format_refs, :version])
-    |> validate_required([:associated_cards, :associated_card_refs, :assets_path, :assets_full_path, :regions, :region_refs, :attack, :cost, :health, :description, :description_raw, :levelup_description, :levelup_description_raw, :flavor_text, :artist_name, :name, :card_code, :keywords, :keyword_refs, :spell_speed, :spell_speed_ref, :raritiy, :rarity_ref, :subtypes, :supertype, :type, :collectible, :set, :formats, :format_refs, :version])
+    |> cast(attrs, [:associated_cards, :associated_card_refs, :assets_path, :assets_full_path, :regions, :region_refs, :attack, :cost, :health, :description, :description_raw, :levelup_description, :levelup_description_raw, :flavor_text, :artist_name, :name, :card_code, :keywords, :keyword_refs, :spell_speed, :spell_speed_ref, :rarity, :rarity_ref, :subtypes, :supertype, :type, :collectible, :set, :formats, :format_refs, :version])
+    |> validate_required([:regions, :region_refs, :attack, :cost, :name, :card_code, :keywords, :keyword_refs, :rarity, :rarity_ref, :collectible, :set])
+    |> unique_constraint(:card_code)
   end
 end
