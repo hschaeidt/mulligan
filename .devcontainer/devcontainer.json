@@ -15,7 +15,7 @@
 				"ms-azuretools.vscode-docker",
 
 				// Optional development tools.
-				"GitHub.copilot-nightly",
+				"GitHub.copilot",
 				"GitHub.copilot-chat"
 			]
 		}
